@@ -15,7 +15,6 @@ public class Main {
             System.out.println("(csv) The number of unique names is: " + _calculatorCSV._Names.size());
             System.out.println("(csv) The number of unique cities is: " + _calculatorCSV._Cities.size());
 
-
             System.out.println("(db) The number of unique names is: " + _calculatorDb._Names.size());
             System.out.println("(db) The number of unique cities is: " + _calculatorDb._Cities.size());
 
