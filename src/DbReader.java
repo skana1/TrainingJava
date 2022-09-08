@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class DbReader {
+public class DbReader implements  IPersonReader{
     private Connection _connection = null;
     public Statement _stm = null;
     private ResultSet _resultSet = null;
@@ -31,9 +31,8 @@ public class DbReader {
     public Person getPerson() throws SQLException {
         String name = _resultSet.getString("nome");
         String surname = _resultSet.getString("cognome");
-        String address = _resultSet.getString("indirizzo");
         String city = _resultSet.getString("citta");
-
-        return new Person(name, surname, address, city);
+        String address = _resultSet.getString("indirizzo");
+        return new Person(name, surname, city, address);
     }
 }

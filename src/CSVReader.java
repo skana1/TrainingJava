@@ -4,7 +4,7 @@ import java.nio.Buffer;
 import java.sql.SQLException;
 import java.util.HashSet;
 
-public class CSVReader {
+public class CSVReader implements IPersonReader {
 
     final static int NAME_COLUMN_NUMBER = 0;
     final static int SURNAME_COLUMN_NUMBER = 1;
