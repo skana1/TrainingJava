@@ -1,35 +1,43 @@
-import java.sql.ResultSet;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
 
 public class Main {
-
-    final static int ID_COLUMN_NUMBER = 1;
-    final static int NAME_COLUMN_NUMBER = 2;
-    final static int SURNAME_COLUMN_NUMBER = 3;
-    final static int ADDRESS_COLUMN_NUMBER = 4;
-    final static int CITY_COLUMN_NUMBER = 5;
-
-
     public static void main(String[] args) {
 
-        try{
-            DbReader reader = new DbReader();
-            HashSet<String> _names = new HashSet<String>();
-            HashSet<String> _cities = new HashSet<String>();
+        try {
+            CSVReader reader1 = new CSVReader();
+            DbReader reader2 = new DbReader();
+            HashSet<String> _fileNames = new HashSet<String>();
+            HashSet<String> _fileCities = new HashSet<String>();
 
-            while (reader.nextResult()) {
-                _names.add(reader.GetCellValue(NAME_COLUMN_NUMBER));
-                _cities.add(reader.GetCellValue(CITY_COLUMN_NUMBER));
+            HashSet<String> _dbNames = new HashSet<String>();
+            HashSet<String> _dbCities = new HashSet<String>();
+
+            while (reader1.nextResult()) {
+                Person person = reader1.getPerson();
+
+                _fileNames.add(person.get_name());
+                _fileCities.add(person.get_city());
             }
 
-            System.out.println("The number of unique names is: " + _names.size());
-            System.out.println("The number of unique cities is: " + _cities.size());
-        }
-        catch (SQLException e) {
+            System.out.println("(csv) The number of unique names is: " + _fileNames.size());
+            System.out.println("(csv) The number of unique cities is: " + _fileCities.size());
+
+            while (reader2.nextResult()) {
+                Person person = reader2.getPerson();
+
+                _dbNames.add(person.get_name());
+                _dbCities.add(person.get_city());
+            }
+
+            System.out.println("(db) The number of unique names is: " + _dbNames.size());
+            System.out.println("(db) The number of unique cities is: " + _dbCities.size());
+        } catch (IOException e) {
+            System.out.printf("There was an error with reading the file");
+        } catch (SQLException e) {
             System.out.printf("There was an error with reading the database");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.printf("There was an error with reading the data");
         }
 

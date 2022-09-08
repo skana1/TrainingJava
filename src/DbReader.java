@@ -28,7 +28,12 @@ public class DbReader {
         }
     }
 
-    public String GetCellValue(int column) throws SQLException {
-        return _resultSet.getString(column);
+    public Person getPerson() throws SQLException {
+        String name = _resultSet.getString("nome");
+        String surname = _resultSet.getString("cognome");
+        String address = _resultSet.getString("indirizzo");
+        String city = _resultSet.getString("citta");
+
+        return new Person(name, surname, address, city);
     }
 }
