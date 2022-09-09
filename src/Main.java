@@ -4,19 +4,19 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            CSVReader _readerCSV = new CSVReader();
-            DbReader _readerDB = new DbReader();
+            CSVReader readerCSV = new CSVReader();
+            DbReader readerDB = new DbReader();
 
-            DoPersonCalculations _calculatorCSV = new DoPersonCalculations(_readerCSV);
+            DoPersonCalculations calculatorCSV = new DoPersonCalculations(readerCSV);
 
-            DoPersonCalculations _calculatorDb = new DoPersonCalculations(_readerDB);
+            DoPersonCalculations calculatorDb = new DoPersonCalculations(readerDB);
 
 
-            System.out.println("(csv) The number of unique names is: " + _calculatorCSV._Names.size());
-            System.out.println("(csv) The number of unique cities is: " + _calculatorCSV._Cities.size());
+            System.out.println("(csv) The number of unique names is: " + calculatorCSV._Names.size());
+            System.out.println("(csv) The number of unique cities is: " + calculatorCSV._Cities.size());
 
-            System.out.println("(db) The number of unique names is: " + _calculatorDb._Names.size());
-            System.out.println("(db) The number of unique cities is: " + _calculatorDb._Cities.size());
+            System.out.println("(db) The number of unique names is: " + calculatorDb._Names.size());
+            System.out.println("(db) The number of unique cities is: " + calculatorDb._Cities.size());
 
             
         } catch (IOException e) {
