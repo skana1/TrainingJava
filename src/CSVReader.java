@@ -10,30 +10,54 @@ public class CSVReader implements IPersonReader {
     BufferedReader _reader = null;
     String line = null;
 
-    public CSVReader() throws IOException {
-        String file = "C://Users//User//Desktop//java_training//list_data.csv";
+    int _numOfRows = 0;
 
-        _reader = new BufferedReader(new FileReader(file));
-    }
 
-    public boolean nextResult() throws IOException {
-        if((line = _reader.readLine()) != null) {
-            return true;
-        }else{
-            _reader.close();
+    public CSVReader() throws PersonReaderException {
 
-            return false;
+        try {
+            String file = "C://Users//User//Desktop//java_training//list_data.csv123";
+
+            _reader = new BufferedReader(new FileReader(file));
+        }catch (FileNotFoundException exc){
+
+            throw new PersonReaderException(_numOfRows);
         }
+
     }
 
-    public Person getPerson() throws IOException {
-        String[] elements = line.split(",");
+    public boolean nextResult() throws PersonReaderException {
 
-        String name = elements[NAME_COLUMN_NUMBER];
-        String surname = elements[SURNAME_COLUMN_NUMBER];
-        String address = elements[ADDRESS_COLUMN_NUMBER];
-        String city = elements[CITY_COLUMN_NUMBER];
+        try {
+            if((line = _reader.readLine()) != null) {
 
-        return new Person(name, surname, address, city);
+                _numOfRows ++;
+                return true;
+            }else{
+                _reader.close();
+
+                return false;
+            }
+        } catch (Exception exc){
+             throw new PersonReaderException(_numOfRows);
+        }
+
+    }
+
+    public Person getPerson() throws PersonReaderException {
+
+        try {
+            String[] elements = line.split(",");
+
+            String name = elements[NAME_COLUMN_NUMBER];
+            String surname = elements[SURNAME_COLUMN_NUMBER];
+            String address = elements[ADDRESS_COLUMN_NUMBER];
+            String city = elements[CITY_COLUMN_NUMBER];
+
+            return new Person(name, surname, address, city);
+        }catch (Exception exc){
+            throw new PersonReaderException(_numOfRows);
+        }
+
     }
 }

@@ -19,12 +19,8 @@ public class Main {
             System.out.println("(db) The number of unique cities is: " + calculatorDb._Cities.size());
 
             
-        } catch (IOException e) {
-            System.out.printf("There was an error with reading the file");
-        } catch (SQLException e) {
-            System.out.printf("There was an error with reading the database");
-        } catch (Exception e) {
-            System.out.printf("There was an error with reading the data");
+        } catch (PersonReaderException exc) {
+            System.out.println(exc);
         }
 
     }

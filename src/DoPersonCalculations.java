@@ -15,7 +15,7 @@ public class DoPersonCalculations {
 
     IPersonReader reader = null;
 
-    public DoPersonCalculations(IPersonReader reader) throws SQLException, IOException {
+    public DoPersonCalculations(IPersonReader reader) throws PersonReaderException {
         this.reader = reader;
 
         while (reader.nextResult()) {
@@ -25,13 +25,13 @@ public class DoPersonCalculations {
         }
     }
 
-    public int getNumberOfNames() throws SQLException, IOException {
+    public int getNumberOfNames(){
 
         return _Names.size();
     }
 
 
-    public int getNumberOfCities() throws SQLException, IOException {
+    public int getNumberOfCities() {
 
         return _Cities.size();
     }

@@ -5,6 +5,6 @@ import java.sql.SQLException;
 
 public interface IPersonReader {
 
-    public boolean nextResult()throws IOException, SQLException;
-    public Person getPerson()throws IOException,SQLException;
+    public boolean nextResult() throws  PersonReaderException;
+    public Person getPerson() throws PersonReaderException;
 }
