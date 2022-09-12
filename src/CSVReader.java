@@ -13,14 +13,14 @@ public class CSVReader implements IPersonReader {
     int _numOfRows = 0;
 
 
-    public CSVReader() throws PersonReaderException {
+    public CSVReader(String file) throws PersonReaderException {
 
         try {
-            String file = "C://Users//User//Desktop//java_training//list_data.csv123";
+
 
             _reader = new BufferedReader(new FileReader(file));
         }catch (FileNotFoundException exc){
-
+            System.out.println(exc);
             throw new PersonReaderException(_numOfRows);
         }
 

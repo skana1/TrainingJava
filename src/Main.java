@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            CSVReader readerCSV = new CSVReader();
-            DbReader readerDB = new DbReader();
+            CSVReader readerCSV = new CSVReader(Main.class.getResource(".//resources//list_data.csv12").getPath());
+            DbReader readerDB = new DbReader("jdbc:mysql://195.179.236.1:3306/u323045651_citta", "u323045651_java", "P3MYEx!,Q!d!");
 
             DoPersonCalculations calculatorCSV = new DoPersonCalculations(readerCSV);
 

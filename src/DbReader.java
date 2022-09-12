@@ -7,7 +7,7 @@ public class DbReader implements  IPersonReader {
 
     int _nrOfRows = 0;
 
-    public DbReader() throws PersonReaderException {
+    public DbReader(String url, String user, String password) throws PersonReaderException {
 
         try {
             //Register Driver
@@ -15,7 +15,7 @@ public class DbReader implements  IPersonReader {
 
             //Get Connection
             _connection = DriverManager.getConnection
-                    ("jdbc:mysql://195.179.236.1:3306/u323045651_citta", "u323045651_java", "P3MYEx!,Q!d!");
+                    (url,user,password);
 
             _stm = _connection.createStatement();
 
