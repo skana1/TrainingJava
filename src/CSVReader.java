@@ -16,9 +16,9 @@ public class CSVReader implements IPersonReader {
     public CSVReader(String file) throws PersonReaderException {
 
         try {
+            String path = getClass().getResource(file).getPath() ;
 
-
-            _reader = new BufferedReader(new FileReader(file));
+            _reader = new BufferedReader(new FileReader(path));
         }catch (FileNotFoundException exc){
             System.out.println(exc);
             throw new PersonReaderException(_numOfRows);
