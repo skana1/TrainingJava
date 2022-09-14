@@ -10,7 +10,6 @@ public class DoPersonCalculations {
     final static int CITY_COLUMN_NUMBER = 3;
 
     HashSet<String> _Names = new HashSet<String>();
-
     HashSet<String> _Cities = new HashSet<String>();
 
     IPersonReader reader = null;

@@ -43,7 +43,6 @@ public class CSVReader implements IPersonReader {
         }
 
     }
-
     public Person getPerson() throws PersonReaderException {
 
         try {

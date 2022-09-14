@@ -44,7 +44,6 @@ public class Person {
     public void set_address(String _address) {
         this._address = _address;
     }
-
     @Override
     public String toString() {
         return "Person{" +

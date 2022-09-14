@@ -12,7 +12,6 @@ public class DbReader implements  IPersonReader {
         try {
             //Register Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-
             //Get Connection
             _connection = DriverManager.getConnection
                     (url,user,password);
