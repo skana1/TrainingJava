@@ -1,6 +1,9 @@
-import java.io.*;
+import com.mysql.cj.protocol.Message;
 
-public class CSVReader implements IPersonReader {
+import java.io.*;
+import java.util.Observer;
+
+public class CSVReader extends ReaderSubject implements IPersonReader{
 
     final static int NAME_COLUMN_NUMBER = 0;
     final static int SURNAME_COLUMN_NUMBER = 1;
@@ -26,6 +29,7 @@ public class CSVReader implements IPersonReader {
 
     }
 
+    @Override
     public boolean nextResult() throws PersonReaderException {
 
         try {
@@ -43,6 +47,8 @@ public class CSVReader implements IPersonReader {
         }
 
     }
+
+    @Override
     public Person getPerson() throws PersonReaderException {
 
         try {

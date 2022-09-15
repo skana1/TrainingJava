@@ -1,11 +1,18 @@
-import java.sql.*;
+import com.mysql.cj.protocol.Message;
 
-public class DbReader implements  IPersonReader {
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
+
+public class DbReader extends ReaderSubject implements IPersonReader {
     private Connection _connection = null;
     public Statement _stm = null;
     private ResultSet _resultSet = null;
 
     int _nrOfRows = 0;
+
+    private List<Subcriber> subcribers = new ArrayList<>();
 
     public DbReader(String url, String user, String password) throws PersonReaderException {
 
@@ -25,6 +32,8 @@ public class DbReader implements  IPersonReader {
 
     }
 
+
+  @Override
     public boolean nextResult() throws PersonReaderException {
         try{
             if(_resultSet.next()) {
@@ -42,6 +51,9 @@ public class DbReader implements  IPersonReader {
 
     }
 
+
+
+    @Override
     public Person getPerson() throws PersonReaderException {
 
         try {

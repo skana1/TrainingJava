@@ -17,10 +17,18 @@ public class DoPersonCalculations {
     public DoPersonCalculations(IPersonReader reader) throws PersonReaderException {
         this.reader = reader;
 
+        Subcriber subcriber1 = new SubcriberImpementation();
+        Subcriber subcriber2 = new SubcriberImpementation();
+
+        reader.attach(subcriber1);
+        reader.attach(subcriber2);
+
+
         while (reader.nextResult()) {
             Person person = reader.getPerson();
             _Names.add(person.get_name());
             _Cities.add(person.get_city());
+            reader.notifyUpdate(person, "This person was read: ");
         }
     }
 
